@@ -15,10 +15,13 @@ const VALIDATOR = {
 }
 
 
-export function NoteForm({title, onClickEdit, onClickDelete, onSubmit}){
+export function NoteForm({isEditable=true, note, title, onClickEdit, onClickDelete, onSubmit}){
 
-    const [formvalues, setFormValues] = useState({title: "", content: ""});
-    const [formError, setFormError] = useState({title: true, content: true});
+    const [formvalues, setFormValues] = useState({
+        title: note?.title || " ",
+        content: note?.content
+    });
+    const [formError, setFormError] = useState({title: note?.title ? undefined : true, content: note?.content ? undefined : true});
 
     
     const updateFormValues = (e)=>{
@@ -50,10 +53,10 @@ export function NoteForm({title, onClickEdit, onClickDelete, onSubmit}){
     const actionIcons=(
         <>
             <div className="col-1">
-                { onClickEdit && <PencilFill className={s.icon}/> }
+                { onClickEdit && <PencilFill onClick={onClickEdit} className={s.icon}/> }
             </div>
             <div className="col-1">
-            { onClickDelete && <TrashFill className={s.icon}/> }
+            { onClickDelete && <TrashFill onClick={onClickDelete} className={s.icon}/> }
             </div>
         </>
     );
@@ -61,7 +64,7 @@ export function NoteForm({title, onClickEdit, onClickDelete, onSubmit}){
     const titleInput=(
         <div className="mb-5">
             <label className="form-label">Title</label>
-            <input onChange={updateFormValues} type="text" name="title" className="form-control" />
+            <input onChange={updateFormValues} type="text" name="title" className="form-control" value={formvalues.title} />
             <FieldError msg={formError.title}></FieldError>
         </div>
     );
@@ -69,7 +72,7 @@ export function NoteForm({title, onClickEdit, onClickDelete, onSubmit}){
     const contentInput=(
         <div className="mb-5">
             <label className="form-label">Content</label>
-            <textarea onChange={updateFormValues} type="text" name="content" className="form-control" row="5" />
+            <textarea onChange={updateFormValues} type="text" name="content" className="form-control" row="5" value={formvalues.content} />
             <FieldError msg={formError.content}></FieldError>
         </div>
     );
@@ -92,8 +95,10 @@ export function NoteForm({title, onClickEdit, onClickDelete, onSubmit}){
                 {actionIcons}
             </div>
 
-            <div className={`mb-3 ${s.title_input_container}`}>{titleInput}</div>
-            <div className="mb-3">{contentInput}</div>
+            <div className={`mb-3 ${s.title_input_container}`}>
+                {isEditable && titleInput}
+            </div>
+            <div className="mb-3">{isEditable ? contentInput : <pre>{note.content}</pre>}</div>
             {submitBtn}
         </div>
     );

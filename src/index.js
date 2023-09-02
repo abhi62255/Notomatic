@@ -19,7 +19,7 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="/" element={<NoteBrowse />}></Route>
-            <Route path="/note/:id" element={<Note />}></Route>
+            <Route path="/note/:noteId" element={<Note />}></Route>
             <Route path="/note/new" element={<NoteCreate />}></Route>
             <Route path="*" element={<PageNotFound />}></Route>
           </Route>
