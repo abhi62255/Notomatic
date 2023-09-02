@@ -1,0 +1,40 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "A title",
+      "content": "bla bla",
+      "created_at": "01/01/2022"
+    },
+    {
+      "title": "A note",
+      "content": "Some note content",
+      "created_at": "01/01/2022",
+      "id": 2
+    },
+    {
+      "title": "asdasd",
+      "content": "asdadads",
+      "created_at": "02/09/2023",
+      "id": 3
+    },
+    {
+      "title": "asdasd",
+      "content": "asdasdasd",
+      "created_at": "02/09/2023",
+      "id": 4
+    },
+    {
+      "title": "asdasd",
+      "content": "asdasdasdasd",
+      "created_at": "02/09/2023",
+      "id": 5
+    },
+    {
+      "title": "aasa",
+      "content": "asdasd",
+      "created_at": "02/09/2023",
+      "id": 6
+    }
+  ]
+}
