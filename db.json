@@ -1,3 +1,16 @@
 {
-  "notes": []
+  "notes": [
+    {
+      "title": " React class",
+      "content": "Learn navigator today",
+      "created_at": "02/09/2023",
+      "id": 1
+    },
+    {
+      "title": " React state",
+      "content": "lear about react state",
+      "created_at": "02/09/2023",
+      "id": 2
+    }
+  ]
 }
